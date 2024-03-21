@@ -48,10 +48,9 @@ public class EmployeeManagementTestSteps {
 
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		employeeManagementPage.getAutoGenerateToggle().click();
-		String randomId = String.valueOf(random.nextInt(100));
+		String randomId = String.valueOf(random.nextInt(1000));
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		employeeManagementPage.getEmployeeIdBox().sendKeys(randomId);
-		Thread.sleep(5000);
 		String existingDate = employeeManagementPage.getJoinedDateBox().getAttribute("value");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate date = LocalDate.parse(existingDate, formatter);
@@ -91,6 +90,7 @@ public class EmployeeManagementTestSteps {
 	}
 
 	public void clickOnButton(String button) {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		helper.waitForElementToBeClickable(employeeManagementPage.getButton(button));
 		employeeManagementPage.getButton(button).click();
 	}
@@ -132,7 +132,6 @@ public class EmployeeManagementTestSteps {
 		Assert.assertNotNull(employeeManagementPage.getFirstNameOnDetails().getText());
 		Assert.assertNotNull(employeeManagementPage.getLastNameOnDetails().getText());
 		employeeManagementPage.getTabsOnEmployeeDetails("Job").click();
-		Assert.assertNotNull(employeeManagementPage.getLastNameOnDetails().getText());
 		Assert.assertTrue(employeeManagementPage.getEmployementStatus().getText().contains("Full-Time Permanent"));
 	}
 }

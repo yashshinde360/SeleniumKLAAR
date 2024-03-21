@@ -76,12 +76,4 @@ public class Hooks {
 		File DestFile = new File(fileWithPath);
 		FileUtils.copyFile(SrcFile, DestFile);
 	}
-
-	@AfterStep
-	public void attachEachStepScreenshot(Scenario scenario) {
-		String screenshotName = scenario.getName().replace(" ", "_");
-		byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		scenario.attach(sourcePath, "image/png", screenshotName);
-	}
-
 }

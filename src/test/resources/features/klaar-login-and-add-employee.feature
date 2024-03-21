@@ -1,4 +1,4 @@
-Feature: 
+Feature: To test KLAAR Admin application
 	As an user
 	I want to navigate to KLAAR Admin
 	So that I can verify Add Employee, form filling functionality of KLAAR
